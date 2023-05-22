@@ -52,5 +52,47 @@ public class BankAtmUI {
         JTextField enterCurrentWithdrawAmount = new JTextField(" Amount ");
         JButton CurrentWithdraw = new JButton("Withdraw");
 
+        public void BankUI() {
+                myFrame.add(enterPinLabel);
+                myFrame.add(InputPin);
+                myFrame.add(LoginButton);
+                myFrame.setSize(800, 400);
+                myFrame.setLayout(new FlowLayout(FlowLayout.LEADING));
+                myFrame.setVisible(true);
+                myFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-}
+                LoginButton.addActionListener(e -> {
+                        System.out.println("Choose Account Type");
+
+                        double PIN = Double.parseDouble(InputPin.getText());
+
+                        if (PIN == 5555) {
+                                drawLoginUI();
+                        } else {
+                                JOptionPane.showMessageDialog(null, "Insert correct PIN");
+                        }
+
+                });
+        }
+
+        public void drawLoginUI() {
+                LoginFrame = new JFrame("Choose Account Type");
+                LoginFrame.add(SavingsAccountButton);
+                LoginFrame.add(CurrentAccountButton);
+                LoginFrame.setLayout(new FlowLayout(FlowLayout.LEADING));
+                LoginFrame.setSize(800, 400);
+                LoginFrame.setVisible(true);
+
+                SavingsAccountButton.addActionListener(e -> {
+                        SavingsAccountButton.setSize(20, 20);
+                        drawSavingsAccountUI();
+
+                });
+                CurrentAccountButton.addActionListener(e -> {
+                        drawCurrentAccountUI();
+
+                });
+
+
+
+        }
