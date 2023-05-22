@@ -133,4 +133,34 @@ public class BankAtmUI {
                 SavingsWithdrawFrame.setVisible(true);
         });
 
+        public void drawCurrentAccountUI() {
+                this.CurrentAccountFrame = new JFrame("Current Account");
+                this.CurrentAccountFrame.add(this.CurrentDepositButton);
+                this.CurrentAccountFrame.add(this.CurrentWithdrawButton);
+                this.CurrentAccountFrame.setLayout(new FlowLayout(3));
+                this.CurrentAccountFrame.setSize(800, 400);
+                this.CurrentAccountFrame.setVisible(true);
+        });
+
+        public void drawCurrentDepositUI() {
+                this.CurrentDepositFrame = new JFrame("Enter Deposit Details");
+                this.CurrentDepositFrame.add(this.enterCurrentDepositAmount);
+                this.CurrentDepositFrame.add(this.CurrentDeposit);
+                this.CurrentDepositFrame.setLayout(new FlowLayout(3));
+                this.CurrentDepositFrame.setSize(800, 400);
+                this.CurrentDepositFrame.setVisible(true);
+        });
+
+        public void drawCurrentWithdrawUI() {
+                this.CurrentWithdrawFrame = new JFrame("Enter Withdraw Details");
+                this.CurrentWithdrawFrame.add(this.enterCurrentWithdrawAmount);
+                this.CurrentWithdrawFrame.add(this.CurrentWithdraw);
+                this.CurrentWithdrawFrame.setLayout(new FlowLayout(3));
+                this.CurrentWithdrawFrame.setSize(800, 400);
+                this.CurrentWithdrawFrame.setVisible(true);
+        });
+
+
         }
+
+
