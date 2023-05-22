@@ -96,3 +96,41 @@ public class BankAtmUI {
 
 
         }
+        public void drawSavingsAccountUI() {
+                SavingsAccountFrame = new JFrame("Savings Account");
+                SavingsAccountFrame.add(SavingsDepositButton);
+                SavingsAccountFrame.add(SavingsWithdrawButton);
+                SavingsAccountFrame.setLayout(new FlowLayout(FlowLayout.LEADING));
+                SavingsAccountFrame.setSize(800, 400);
+                SavingsAccountFrame.setVisible(true);
+
+                SavingsDepositButton.addActionListener(e -> {
+                        drawSavingsDepositUI();
+                });
+
+                SavingsWithdrawButton.addActionListener(e -> {
+                        drawSavingsWithdrawUI();
+                });
+
+        }
+
+        public void drawSavingsDepositUI() {
+                SavingsDepositFrame = new JFrame("Enter Deposit Details");
+                SavingsDepositFrame.add(enterSavingsDepositAmount);
+                SavingsDepositFrame.add(SavingsDeposit);
+                SavingsDepositFrame.setLayout(new FlowLayout(FlowLayout.LEADING));
+                SavingsDepositFrame.setSize(800, 400);
+                SavingsDepositFrame.setVisible(true);
+
+        });
+
+        public void drawSavingsWithdrawUI() {
+                SavingsWithdrawFrame = new JFrame("Enter Withdraw Details");
+                SavingsWithdrawFrame.add(enterSavingsWithdrawAmount);
+                SavingsWithdrawFrame.add(SavingsWithdraw);
+                SavingsWithdrawFrame.setLayout(new FlowLayout(FlowLayout.LEADING));
+                SavingsWithdrawFrame.setSize(800, 400);
+                SavingsWithdrawFrame.setVisible(true);
+        });
+
+        }
