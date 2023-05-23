@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import BankFile.Bankfile;
 
 public class BankAtmUI {
         JFrame myFrame = new JFrame("Welcome To Bank");
@@ -93,9 +94,8 @@ public class BankAtmUI {
 
                 });
 
-
-
         }
+
         public void drawSavingsAccountUI() {
                 SavingsAccountFrame = new JFrame("Savings Account");
                 SavingsAccountFrame.add(SavingsDepositButton);
@@ -122,7 +122,21 @@ public class BankAtmUI {
                 SavingsDepositFrame.setSize(800, 400);
                 SavingsDepositFrame.setVisible(true);
 
-        });
+                SavingsDeposit.addActionListener(e -> {
+                        try {
+                                double Amount = Double.parseDouble(enterSavingsDepositAmount.getText());
+                                double Deposit = Account_Balance.getAccountBalance() + Amount;
+                                JOptionPane.showMessageDialog(null, "Amount: " + Amount + " \n Avail Bal: " + Deposit);
+                                Bankfile.appendData("--Deposit: " + Amount + "||");
+                        } catch (NumberFormatException nfe) {
+                                JOptionPane.showMessageDialog(null, "Pls Input an Amount");
+
+                        } catch (IOException ex) {
+                                throw new RuntimeException(ex);
+                        }
+
+                });
+        }
 
         public void drawSavingsWithdrawUI() {
                 SavingsWithdrawFrame = new JFrame("Enter Withdraw Details");
@@ -131,7 +145,28 @@ public class BankAtmUI {
                 SavingsWithdrawFrame.setLayout(new FlowLayout(FlowLayout.LEADING));
                 SavingsWithdrawFrame.setSize(800, 400);
                 SavingsWithdrawFrame.setVisible(true);
-        });
+
+                SavingsWithdraw.addActionListener(e -> {
+                        try {
+                                double Amount = Double.parseDouble(enterSavingsWithdrawAmount.getText());
+
+                                if (Amount > 20000) {
+                                } else {
+                                        double Withdraw = Account_Balance.getAccountBalance() - Amount;
+                                        JOptionPane.showMessageDialog(null,
+                                                        "Amount: " + Amount + "\n Avail Bal: " + Withdraw);
+
+                                        Bankfile.appendData("--Withdrawn" + Amount + "||");
+
+                                }
+                        } catch (NumberFormatException nfe) {
+                                JOptionPane.showMessageDialog(null, "Pls Input an Amount");
+
+                        } catch (IOException ex) {
+                                throw new RuntimeException(ex);
+                        }
+                });
+        }
 
         public void drawCurrentAccountUI() {
                 this.CurrentAccountFrame = new JFrame("Current Account");
@@ -140,7 +175,15 @@ public class BankAtmUI {
                 this.CurrentAccountFrame.setLayout(new FlowLayout(3));
                 this.CurrentAccountFrame.setSize(800, 400);
                 this.CurrentAccountFrame.setVisible(true);
-        });
+
+                CurrentDepositButton.addActionListener(e -> {
+                        drawCurrentDepositUI();
+                });
+
+                CurrentWithdrawButton.addActionListener(e -> {
+                        drawCurrentWithdrawUI();
+                });
+        }
 
         public void drawCurrentDepositUI() {
                 this.CurrentDepositFrame = new JFrame("Enter Deposit Details");
@@ -149,7 +192,20 @@ public class BankAtmUI {
                 this.CurrentDepositFrame.setLayout(new FlowLayout(3));
                 this.CurrentDepositFrame.setSize(800, 400);
                 this.CurrentDepositFrame.setVisible(true);
-        });
+
+                CurrentDeposit.addActionListener(e -> {
+                        try {
+                                double Amount = Double.parseDouble(enterCurrentDepositAmount.getText());
+                                double Deposit = Account_Balance.getAccountBalance() + Amount;
+                                JOptionPane.showMessageDialog(null, "Amount: " + Amount + " \n Avail Bal: " + Deposit);
+                                Bankfile.appendData("--Deposit: " + Amount + "||");
+                        } catch (NumberFormatException nfe) {
+                                JOptionPane.showMessageDialog(null, "Pls Input an Amount");
+                        } catch (IOException ex) {
+                                throw new RuntimeException(ex);
+                        }
+                });
+        }
 
         public void drawCurrentWithdrawUI() {
                 this.CurrentWithdrawFrame = new JFrame("Enter Withdraw Details");
@@ -158,9 +214,19 @@ public class BankAtmUI {
                 this.CurrentWithdrawFrame.setLayout(new FlowLayout(3));
                 this.CurrentWithdrawFrame.setSize(800, 400);
                 this.CurrentWithdrawFrame.setVisible(true);
-        });
 
-
+                CurrentWithdraw.addActionListener(e -> {
+                        try {
+                                double Amount = Double.parseDouble(enterCurrentWithdrawAmount.getText());
+                                double Withdraw = Account_Balance.getAccountBalance() - Amount;
+                                JOptionPane.showMessageDialog(null, "Amount: " + Amount + " \n Avail Bal: " + Withdraw);
+                                Bankfile.appendData("--Withdrawn: " + Amount + "||");
+                        } catch (NumberFormatException nfe) {
+                                JOptionPane.showMessageDialog(null, "Pls Input an Amount");
+                        } catch (IOException ex) {
+                                throw new RuntimeException(ex);
+                        }
+                });
         }
 
-
+}
