@@ -8,7 +8,7 @@ import java.io.IOException;
 import BankFile.Bankfile;
 
 public class BankAtmUI {
-        JFrame myFrame = new JFrame("Welcome To Bank");
+        JFrame myFrame = new JFrame("Welcome To UNIX Bank");
 
         JLabel enterPinLabel = new JLabel(" Enter PIN");
 
